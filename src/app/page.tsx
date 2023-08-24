@@ -17,12 +17,16 @@ export default function Home() {
     fetchTrendingMovies();
   }, []);
 
+  const handleClickPrev = () => {};
+
+  const handleClickNext = () => {};
+
   if (!trendingMovies) return <p>Loading...</p>;
-  console.log(trendingMovies);
+
   return (
     <main>
       <h2 className='pl-4 text-xl'>Trending Movies today</h2>
-      <div className='flex flex-row overflow-hidden'>
+      <div className='flex flex-row overflow-x-scroll'>
         {trendingMovies.map(
           (movie: { poster_path: string; title: string; id: string }) => {
             return (
