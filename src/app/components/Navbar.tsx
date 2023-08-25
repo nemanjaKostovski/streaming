@@ -3,19 +3,19 @@ import Link from 'next/link';
 
 export default function NavBar() {
   return (
-    <nav className='flex flex-row justify-between h-20 p-4 '>
+    <nav className='flex flex-row justify-between h-20 p-4 top-0 sticky z-20 bg-transparent'>
       <Link
-        className='relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] text-gray-400 hover:dark:text-white pr-4'
+        className='relative text-black hover:text-white pr-4 font-bold'
         href='/movies'
       >
         Movies
       </Link>
       <Link href='/'>
-        <h1 className='relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] text-gray-400 text-4xl'>
+        <h1 className='relative text-black hover:text-white sm:text-4xl font-extrabold'>
           StreamingMAX
         </h1>
       </Link>
-      <p>Login</p>
+      <p className='text-black hover:text-white'>Login</p>
     </nav>
   );
 }
