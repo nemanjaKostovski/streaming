@@ -29,6 +29,8 @@ export default function Home() {
       <div className='absolute top-0 z-10 w-full sm:w-auto h-60 sm:h-screen pr-10 mb-60'>
         <Carousel
           transition={{ duration: 1 }}
+          autoplay={true}
+          loop={true}
           className='flex overflow-hidden w-screen sm:w-auto relative h-screen'
         >
           {trendingMoviesWeek.map(
@@ -55,7 +57,7 @@ export default function Home() {
                   alt={movie.title}
                   key={movie.id}
                 />
-                <h3 className='hidden title sm:inline absolute left-4 bottom-40 mix-blend-normal text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
+                <h3 className='hidden title sm:inline absolute left-4 bottom-20 bg-black rounded-sm text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
                   {movie.title}
                 </h3>
               </div>
