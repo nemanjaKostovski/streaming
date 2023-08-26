@@ -30,6 +30,8 @@ const config: Config = withMT({
 
         '2xl': '1536px',
         // => @media (min-width: 1536px) { ... }
+        '4xl': '2000px',
+        // => @media (min-width: 1536px) { ... }
       },
     },
   },

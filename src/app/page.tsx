@@ -64,8 +64,8 @@ export default function Home() {
         </Carousel>
       </div>
       <div className='pt-96 mt-96'>
-        <div className='hidden 2xl:block 2xl:h-96'></div>
-        <h2 className='pl-4 mt-32 mb-2 text-xl 2xl:mt-96'>
+        <div className='hidden 4xl:block 4xl:h-96'></div>
+        <h2 className='pl-4 mt-32 mb-2 text-xl 4xl:mt-96'>
           Trending Movies today
         </h2>
         <div className='flex flex-row overflow-x-scroll'>
