@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { getTrendingMovies, getTrendingMoviesWeek } from '@/lib/fetch';
 import { useEffect, useState } from 'react';
 import { Carousel } from '@material-tailwind/react';
@@ -26,12 +25,11 @@ export default function Home() {
 
   return (
     <main className='overflow-hidden'>
-      <div className='absolute top-0 z-10 w-full sm:w-auto h-60 sm:h-screen pr-10 mb-60'>
+      <div className='absolute top-0 z-10 w-screen sm:w-auto h-60 sm:h-screen mb-60'>
         <Carousel
           transition={{ duration: 1 }}
           autoplay={true}
-          loop={true}
-          className='flex overflow-hidden w-screen sm:w-auto relative h-screen'
+          className='flex overflow-hidden w-screen sm:w-auto relative h-screen 4xl:h-10/12'
         >
           {trendingMoviesWeek.map(
             (movie: {
@@ -67,10 +65,10 @@ export default function Home() {
       </div>
       <div className='pt-96 mt-96'>
         <div className='hidden 4xl:block 4xl:h-96'></div>
-        <h2 className='pl-4 mt-32 mb-2 text-xl 4xl:mt-96'>
+        <h2 className='pl-4 mt-32 mb-2 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12'>
           Trending Movies today
         </h2>
-        <div className='flex flex-row overflow-x-scroll'>
+        <div className='flex flex-row overflow-x-scroll sm:ml-12 sm:mr-12'>
           {trendingMovies.map(
             (movie: { poster_path: string; title: string; id: string }) => {
               return (

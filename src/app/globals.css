@@ -54,4 +54,13 @@ body {
   .title {
     font-family: 'Shadows Into Light', cursive;
   }
+  .bg {
+    background: rgb(0, 4, 0);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 4, 0, 1) 0%,
+      rgba(20, 3, 41, 1) 75%,
+      rgba(33, 3, 70, 1) 100%
+    );
+  }
 }
