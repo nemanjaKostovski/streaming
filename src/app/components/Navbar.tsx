@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-//passing a user prop later for link switch from Login to profile
 export default function NavBar() {
   return (
     <nav className='flex flex-row justify-between h-20 p-4 top-0 sticky z-20 bg-transparent sm:ml-12 sm:mr-12'>
