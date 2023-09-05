@@ -84,9 +84,32 @@ async function getUpcomingMovies() {
   const data = await response.json();
   return data;
 }
+
+async function getMovieById(id: number) {
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_ACCESS_TOKEN}`,
+    },
+  };
+
+  const response = await fetch(
+    `${URL}${VERSION}/movie/${id}?language=en-US`,
+    options
+  );
+  if (response.status !== 200) {
+    throw new Error(`Fetch failed ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
 export {
   getTrendingMovies,
   getTrendingMoviesWeek,
   searchMovieByTitle,
   getUpcomingMovies,
+  getMovieById,
 };

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { getTrendingMovies, getTrendingMoviesWeek } from '@/lib/fetch';
 import { useEffect, useState } from 'react';
 import { Carousel } from '@material-tailwind/react';
@@ -57,9 +58,11 @@ export default function Home() {
                   alt={movie.title}
                   key={movie.id}
                 />
-                <h3 className='hidden title sm:inline absolute left-4 bottom-20 bg-black rounded-sm text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
-                  {movie.title}
-                </h3>
+                <Link href={`/movies/${movie.id}`}>
+                  <h3 className='hidden title sm:inline absolute left-4 bottom-20 bg-black rounded-sm text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
+                    {movie.title}
+                  </h3>
+                </Link>
               </div>
             )
           )}
@@ -74,14 +77,17 @@ export default function Home() {
           {trendingMovies.map(
             (movie: { poster_path: string; title: string; id: string }) => {
               return (
-                <Image
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                  className='pr-4'
-                  width={300}
-                  height={450}
-                  alt={movie.title}
-                  key={movie.id}
-                />
+                <Link href={`/movies/${movie.id}`} key={movie.id}>
+                  <div className='w-80 h-full'>
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      className='pr-2'
+                      width={300}
+                      height={450}
+                      alt={movie.title}
+                    />
+                  </div>
+                </Link>
               );
             }
           )}
