@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { getTrendingMovies, getTrendingMoviesWeek } from '@/lib/fetch';
 import { useEffect, useState } from 'react';
 import { Carousel } from '@material-tailwind/react';
+import NavBar from '@/app/components/Navbar';
 
 export default function Home() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -25,6 +26,7 @@ export default function Home() {
 
   return (
     <main className='overflow-hidden'>
+      <NavBar />
       <div className='absolute top-0 z-10 w-screen sm:w-auto h-60 sm:h-screen mb-60'>
         <Carousel
           transition={{ duration: 1 }}

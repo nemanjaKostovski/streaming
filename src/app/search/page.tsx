@@ -4,6 +4,7 @@ import { searchMovieByTitle, getUpcomingMovies } from '@/lib/fetch';
 import { useEffect, useState, ChangeEvent } from 'react';
 import useDebounce from '../components/useDebounce';
 import Image from 'next/image';
+import NavBar from '../components/Navbar';
 
 type Movie = {
   original_title: string;
@@ -37,6 +38,7 @@ const Search = () => {
   };
   return (
     <>
+      <NavBar />
       <div className='p-4 sm:ml-12 sm:mr-12'>
         <input
           type='text'

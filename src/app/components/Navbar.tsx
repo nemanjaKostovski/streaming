@@ -14,21 +14,12 @@ export default function NavBar() {
           StreamingMAX
         </h1>
       </Link>
-
-      {/* {user ? (
-        <Link href={`/profile/${user.username}`}>
-          <span className='text-white hover:text-gray-200 font-bold text-xl'>
-            {user.username}
-          </span>
-        </Link>
-      ) : ( */}
       <Link
-        href='/login'
+        href='/api/auth/signin?callbackUrl=%2F'
         className='text-white hover:text-gray-200 font-bold text-xl'
       >
-        Login
+        Logout
       </Link>
-      {/* )} */}
     </nav>
   );
 }
