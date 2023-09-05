@@ -16,7 +16,7 @@ const Search = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
 
-  const debouncedSearchQuery = useDebounce(searchInput, 500);
+  const debouncedSearchQuery = useDebounce(searchInput, 400);
 
   useEffect(() => {
     (async () => {

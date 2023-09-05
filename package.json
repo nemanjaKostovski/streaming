@@ -18,6 +18,7 @@
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "jsonwebtoken": "^9.0.1",
+    "jwt-decode": "^3.1.2",
     "mongoose": "^7.4.5",
     "next": "13.4.19",
     "next-auth": "^4.23.1",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.3",
-    "@types/jsonwebtoken": "^9.0.2"
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/jwt-decode": "^3.1.0"
   }
 }
