@@ -106,10 +106,32 @@ async function getMovieById(id: number) {
   return data;
 }
 
+async function getRecommendedMovies(id: number) {
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_ACCESS_TOKEN}`,
+    },
+  };
+
+  const response = await fetch(
+    `${URL}${VERSION}/movie/${id}/recommendations?language=en-US&page=1`,
+    options
+  );
+  if (response.status !== 200) {
+    throw new Error(`Fetch failed ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
 export {
   getTrendingMovies,
   getTrendingMoviesWeek,
   searchMovieByTitle,
   getUpcomingMovies,
   getMovieById,
+  getRecommendedMovies,
 };
