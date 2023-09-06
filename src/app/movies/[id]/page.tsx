@@ -1,5 +1,6 @@
 'use client';
 
+import MoviePosterCard from '@/app/components/MoviePosterCard';
 import NavBar from '@/app/components/Navbar';
 import { getMovieById, getRecommendedMovies } from '@/lib/fetch';
 import Image from 'next/image';
@@ -53,7 +54,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
           priority
           alt={movieDetails.original_title}
         />
-        <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent opacity-70 to-opacity-90 to-black'></div>
+        <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent opacity-60 to-black'></div>
 
         <Image
           src={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
@@ -70,7 +71,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
           {movieDetails.runtime} min.{' '}
           {movieDetails.release_date.substring(0, 4)}
         </p>
-        <button className='hidden w-16 sm:block absolute bottom-52 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400'>
+        <button className='hidden w-16 sm:block absolute bottom-52 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'>
           ▶
         </button>
         <p className='hidden w-1/2 sm:inline absolute bottom-16 rounded-sm text-white p-2'>
@@ -84,18 +85,13 @@ const Movie = ({ params }: { params: { id: number } }) => {
       <div className='flex flex-row overflow-x-scroll sm:ml-12 sm:mr-12'>
         {recommendedMovies
           .filter((movie: Movie) => movie.poster_path)
-          .map((movie: { poster_path: string; title: string; id: string }) => (
-            <Link href={`/movies/${movie.id}`} key={movie.id}>
-              <div className='w-80 h-full'>
-                <Image
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                  className='pr-2'
-                  width={300}
-                  height={450}
-                  alt={movie.title}
-                />
-              </div>
-            </Link>
+          .map((movie: { poster_path: string; title: string; id: number }) => (
+            <MoviePosterCard
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              poster={movie.poster_path}
+            />
           ))}
       </div>
     </div>

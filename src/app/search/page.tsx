@@ -6,6 +6,7 @@ import useDebounce from '../components/useDebounce';
 import Image from 'next/image';
 import NavBar from '../components/Navbar';
 import Link from 'next/link';
+import MoviePosterCard from '../components/MoviePosterCard';
 
 type Movie = {
   original_title: string;
@@ -68,16 +69,12 @@ const Search = () => {
       </h2>
       <div className='ml-4 flex flex-row overflow-x-auto sm:ml-12 sm:mr-12'>
         {upcomingMovies.map((movie: Movie) => (
-          <Link key={movie.id} href={`/movies/${movie.id}`}>
-            <div className='w-80 h-full pr-4'>
-              <Image
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                width={300}
-                height={450}
-                alt={movie.original_title}
-              />
-            </div>
-          </Link>
+          <MoviePosterCard
+            key={movie.id}
+            id={movie.id}
+            title={movie.original_title}
+            poster={movie.poster_path}
+          />
         ))}
       </div>
     </>

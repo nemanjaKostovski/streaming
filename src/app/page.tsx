@@ -6,6 +6,7 @@ import { getTrendingMovies, getTrendingMoviesWeek } from '@/lib/fetch';
 import { useEffect, useState } from 'react';
 import { Carousel } from '@material-tailwind/react';
 import NavBar from '@/app/components/Navbar';
+import MoviePosterCard from './components/MoviePosterCard';
 
 export default function Home() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -75,19 +76,14 @@ export default function Home() {
         </h2>
         <div className='flex flex-row overflow-x-scroll sm:ml-12 sm:mr-12'>
           {trendingMovies.map(
-            (movie: { poster_path: string; title: string; id: string }) => {
+            (movie: { poster_path: string; title: string; id: number }) => {
               return (
-                <Link href={`/movies/${movie.id}`} key={movie.id}>
-                  <div className='w-80 h-full'>
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                      className='pr-2'
-                      width={300}
-                      height={450}
-                      alt={movie.title}
-                    />
-                  </div>
-                </Link>
+                <MoviePosterCard
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  poster={movie.poster_path}
+                />
               );
             }
           )}
