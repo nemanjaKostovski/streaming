@@ -5,7 +5,13 @@ export default function NavBar() {
   return (
     <nav className='flex flex-row justify-between h-20 p-4 top-0 sticky z-20 bg-transparent sm:ml-12 sm:mr-12 drop-shadow-md'>
       <Link href='/search'>
-        <Image src='/searching.png' alt='🔍' width={40} height={40} />
+        <Image
+          src='/searching.png'
+          alt='🔍'
+          width={40}
+          height={40}
+          className='hover:opacity-90'
+        />
       </Link>
 
       <Link href='/'>

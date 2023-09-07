@@ -2,9 +2,13 @@
 
 import MoviePosterCard from '@/app/components/MoviePosterCard';
 import NavBar from '@/app/components/Navbar';
-import { getMovieById, getRecommendedMovies } from '@/lib/fetch';
+import {
+  getMovieById,
+  getRecommendedMovies,
+  getMovieTrailers,
+} from '@/lib/fetch';
+import { Carousel } from '@material-tailwind/react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 type Movie = {
@@ -17,10 +21,21 @@ type Movie = {
   release_date: string;
 };
 
+type Trailer = {
+  id: string;
+  key: string;
+};
+
 const Movie = ({ params }: { params: { id: number } }) => {
   const id = params.id;
   const [movieDetails, setMovieDetails] = useState<Movie | null>(null);
   const [recommendedMovies, setRecommendedMovies] = useState([]);
+  const [trailers, setTrailers] = useState([]);
+  const [displayTrailers, setDisplayTrailers] = useState(false);
+
+  const overlayClass = displayTrailers
+    ? 'fixed inset-0 z-20 bg-opacity-50'
+    : '';
 
   useEffect(() => {
     (async () => {
@@ -30,6 +45,8 @@ const Movie = ({ params }: { params: { id: number } }) => {
           const recommended = await getRecommendedMovies(id);
           setMovieDetails(details);
           setRecommendedMovies(recommended.results);
+          const trailersList = await getMovieTrailers(id as unknown as number);
+          setTrailers(trailersList.results);
         } catch (error) {
           console.error('Error fetching movie details: ', error);
         }
@@ -37,11 +54,16 @@ const Movie = ({ params }: { params: { id: number } }) => {
     })();
   }, [id]);
 
+  const showTrailers = () => {
+    setDisplayTrailers((current) => !current);
+  };
+
   if (!movieDetails) {
     return <p>Loading movie details...</p>;
   }
   return (
     <div>
+      <div className={overlayClass}></div>
       <NavBar />
 
       <div className='absolute top-0 z-10 w-screen sm:w-auto h-60 sm:h-screen mb-60'>
@@ -62,23 +84,28 @@ const Movie = ({ params }: { params: { id: number } }) => {
           width={384}
           height={576}
           alt={movieDetails.original_title}
-          key={movieDetails.id}
+          key={movieDetails.id + movieDetails.original_title}
         />
         <h2 className='hidden title sm:inline absolute bottom-80 rounded-sm text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
           {movieDetails.original_title}
         </h2>
-        <p className='hidden w-1/2 sm:inline absolute bottom-72 rounded-sm text-white p-2'>
+        <p className='hidden w-1/2 sm:inline absolute bottom-72 rounded-sm text-white p-2 4xl:text-2xl'>
           {movieDetails.runtime} min.{' '}
           {movieDetails.release_date.substring(0, 4)}
         </p>
-        <button className='hidden w-16 sm:block absolute bottom-52 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'>
+        <button
+          className='hidden w-16 sm:block absolute bottom-52 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'
+          onClick={showTrailers}
+        >
           ▶
         </button>
-        <p className='hidden w-1/2 sm:inline absolute bottom-16 rounded-sm text-white p-2'>
+        <p className='hidden w-1/2 sm:inline absolute bottom-16 rounded-sm text-white p-2 4xl:text-2xl'>
           {movieDetails.overview}
         </p>
       </div>
       <div className='pt-96 mt-96'></div>
+      <div className='hidden 4xl:block 4xl:h-96 xl:block xl:h-60'></div>
+      <div className='hidden 4xl:block 4xl:h-96'></div>
       <h2 className='pl-4 2xl:mt-32 mb-2 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12'>
         Recommended
       </h2>
@@ -93,6 +120,30 @@ const Movie = ({ params }: { params: { id: number } }) => {
               poster={movie.poster_path}
             />
           ))}
+      </div>
+      <div
+        className={
+          'w-5/6 h-4/6 bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 ' +
+          (displayTrailers ? 'block' : 'hidden')
+        }
+      >
+        <button
+          className='absolute z-30 top-0 right-0 text-2xl hover:opacity-80'
+          onClick={showTrailers}
+        >
+          ✖️
+        </button>
+        <Carousel>
+          {trailers.map((trailer: Trailer) => (
+            <iframe
+              className='w-full h-full opacity-100'
+              key={trailer.id}
+              id='video'
+              src={`https://www.youtube.com/embed/${trailer.key}`}
+              allowFullScreen
+            ></iframe>
+          ))}
+        </Carousel>
       </div>
     </div>
   );
