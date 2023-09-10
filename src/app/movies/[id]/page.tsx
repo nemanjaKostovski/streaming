@@ -66,7 +66,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
       <div className={overlayClass}></div>
       <NavBar />
 
-      <div className='absolute top-0 z-10 w-screen sm:w-auto h-60 sm:h-screen mb-60'>
+      <div className='absolute top-0 z-10 w-auto h-screen mb-60'>
         <Image
           key={movieDetails.id}
           src={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
@@ -89,17 +89,17 @@ const Movie = ({ params }: { params: { id: number } }) => {
         <h2 className='hidden title sm:inline absolute bottom-80 rounded-sm text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
           {movieDetails.original_title}
         </h2>
-        <p className='hidden w-1/2 sm:inline absolute bottom-72 rounded-sm text-white p-2 4xl:text-2xl'>
+        <p className='w-full wsm:w-1/2 sm:inline absolute bottom-72 rounded-sm text-white p-2 4xl:text-2xl'>
           {movieDetails.runtime} min.{' '}
           {movieDetails.release_date.substring(0, 4)}
         </p>
         <button
-          className='hidden w-16 sm:block absolute bottom-52 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'
+          className='w-16 sm:block absolute bottom-52 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'
           onClick={showTrailers}
         >
           ▶
         </button>
-        <p className='hidden w-1/2 sm:inline absolute bottom-16 rounded-sm text-white p-2 4xl:text-2xl'>
+        <p className='w-full sm:w-1/2 sm:inline absolute bottom-0 rounded-sm text-white p-2 4xl:text-2xl'>
           {movieDetails.overview}
         </p>
       </div>
@@ -123,7 +123,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
       </div>
       <div
         className={
-          'w-5/6 h-4/6 bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 ' +
+          'sm:w-5/6 sm:h-4/6 w-full h-1/2 bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 ' +
           (displayTrailers ? 'block' : 'hidden')
         }
       >
@@ -141,6 +141,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
               id='video'
               src={`https://www.youtube.com/embed/${trailer.key}`}
               allowFullScreen
+              // mute={displayTrailers ? 0 : 1}
             ></iframe>
           ))}
         </Carousel>
