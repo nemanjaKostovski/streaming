@@ -9,7 +9,7 @@ import {
 } from '@/lib/fetch';
 import { Carousel } from '@material-tailwind/react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 type Movie = {
   id: number;
@@ -121,31 +121,33 @@ const Movie = ({ params }: { params: { id: number } }) => {
             />
           ))}
       </div>
-      <div
-        className={
-          'sm:w-5/6 sm:h-4/6 w-full h-1/2 bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 ' +
-          (displayTrailers ? 'block' : 'hidden')
-        }
-      >
-        <button
-          className='absolute z-30 top-0 right-0 text-2xl hover:opacity-80'
-          onClick={showTrailers}
+      {displayTrailers && (
+        <div
+          className={
+            'sm:w-5/6 sm:h-4/6 w-full h-1/2 bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 appearance-none ' +
+            (displayTrailers ? 'block' : 'hidden')
+          }
         >
-          ✖️
-        </button>
-        <Carousel>
-          {trailers.map((trailer: Trailer) => (
-            <iframe
-              className='w-full h-full opacity-100'
-              key={trailer.id}
-              id='video'
-              src={`https://www.youtube.com/embed/${trailer.key}`}
-              allowFullScreen
-              // mute={displayTrailers ? 0 : 1}
-            ></iframe>
-          ))}
-        </Carousel>
-      </div>
+          <button
+            className='absolute z-30 top-0 right-0 text-2xl hover:opacity-80'
+            onClick={showTrailers}
+          >
+            ✖️
+          </button>
+          <Carousel>
+            {trailers.map((trailer: Trailer) => (
+              <iframe
+                className='w-full h-full opacity-100'
+                key={trailer.id}
+                id='video'
+                src={`https://www.youtube.com/embed/${trailer.key}`}
+                allowFullScreen
+                // mute={displayTrailers ? 0 : 1}
+              ></iframe>
+            ))}
+          </Carousel>
+        </div>
+      )}
     </div>
   );
 };
