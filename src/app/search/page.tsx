@@ -45,7 +45,7 @@ const Search = () => {
         <input
           type='text'
           placeholder='What are you looking for?'
-          className='w-full h-14 bg-gray-900 rounded p-2'
+          className='w-full h-14 bg-gray-900 rounded p-2 text-white'
           value={searchInput}
           onInput={handleInputChange}
         />
@@ -62,7 +62,7 @@ const Search = () => {
             />
           ))}
       </div>
-      <h2 className='pl-4 mb-2 mt-56 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12'>
+      <h2 className='pl-4 mb-2 mt-56 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12 text-white'>
         Upcoming movies
       </h2>
       <div className='ml-4 flex flex-row overflow-x-auto sm:ml-12 sm:mr-12'>
