@@ -105,7 +105,6 @@ const Movie = ({ params }: { params: { id: number } }) => {
       </div>
       <div className='pt-96 mt-96'></div>
       <div className='hidden 4xl:block 4xl:h-96 xl:block xl:h-60'></div>
-      <div className='hidden 4xl:block 4xl:h-96'></div>
       <h2 className='pl-4 2xl:mt-32 mb-2 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12'>
         Recommended
       </h2>
@@ -124,8 +123,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
       {displayTrailers && (
         <div
           className={
-            'sm:w-5/6 sm:h-4/6 w-full h-1/2 bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 appearance-none ' +
-            (displayTrailers ? 'block' : 'hidden')
+            'sm:w-5/6 sm:h-4/6 w-full h-1/2 bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 appearance-none '
           }
         >
           <button

@@ -39,7 +39,7 @@ const Search = () => {
     setSearchInput(e.target.value);
   };
   return (
-    <>
+    <div className='overflow-hidden'>
       <NavBar />
       <div className='p-4 sm:ml-12 sm:mr-12'>
         <input
@@ -54,14 +54,12 @@ const Search = () => {
         {searchMovies
           .filter((movie: Movie) => movie.poster_path)
           .map((movie: Movie) => (
-            <Link href={`/movies/${movie.id}`} key={movie.id}>
-              <Image
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                width={100}
-                height={100}
-                alt={movie.original_title}
-              />
-            </Link>
+            <MoviePosterCard
+              key={movie.id}
+              id={movie.id}
+              title={movie.original_title}
+              poster={movie.poster_path}
+            />
           ))}
       </div>
       <h2 className='pl-4 mb-2 mt-56 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12'>
@@ -77,7 +75,7 @@ const Search = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 export default Search;
