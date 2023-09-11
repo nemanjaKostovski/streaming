@@ -89,12 +89,12 @@ const Movie = ({ params }: { params: { id: number } }) => {
         <h2 className='hidden title sm:inline absolute bottom-80 rounded-sm text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
           {movieDetails.original_title}
         </h2>
-        <p className='w-full wsm:w-1/2 sm:inline absolute bottom-72 rounded-sm text-white p-2 4xl:text-2xl'>
+        <p className='w-full wsm:w-1/2 sm:inline absolute bottom-72 rounded-sm text-white p-2 4xl:text-2xl mb-2'>
           {movieDetails.runtime} min.{' '}
           {movieDetails.release_date.substring(0, 4)}
         </p>
         <button
-          className='w-16 sm:block absolute bottom-52 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'
+          className='w-16 sm:block absolute bottom-60 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'
           onClick={showTrailers}
         >
           ▶
