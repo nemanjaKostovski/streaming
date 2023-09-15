@@ -86,22 +86,24 @@ const Movie = ({ params }: { params: { id: number } }) => {
           alt={movieDetails.original_title}
           key={movieDetails.id + movieDetails.original_title}
         />
-        <h2 className='hidden title sm:inline absolute bottom-80 rounded-sm text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
-          {movieDetails.original_title}
-        </h2>
-        <p className='w-full wsm:w-1/2 sm:inline absolute bottom-72 rounded-sm text-white p-2 4xl:text-2xl mb-2'>
-          {movieDetails.runtime} min.{' '}
-          {movieDetails.release_date.substring(0, 4)}
-        </p>
-        <button
-          className='w-16 sm:block absolute bottom-60 rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'
-          onClick={showTrailers}
-        >
-          ▶
-        </button>
-        <p className='w-full sm:w-1/2 sm:inline absolute bottom-0 rounded-sm text-white p-2 4xl:text-2xl'>
-          {movieDetails.overview}
-        </p>
+        <div className='absolute bottom-0 flex flex-col w-full'>
+          <h2 className='hidden title sm:inline rounded-sm text-white text-xl sm:text-2xl lg:text-4xl decoration-wavy font-bold p-2'>
+            {movieDetails.original_title}
+          </h2>
+          <p className='w-full wsm:w-1/2 sm:inline rounded-sm text-white p-2 4xl:text-2xl mb-2'>
+            {movieDetails.runtime} min.{' '}
+            {movieDetails.release_date.substring(0, 4)}
+          </p>
+          <button
+            className='w-16 sm:block rounded-full text-white p-2 text-4xl border-white border-2 hover:text-gray-400 hover:border-indigo-600 ml-2 pr-1'
+            onClick={showTrailers}
+          >
+            ▶
+          </button>
+          <p className='w-full sm:w-1/2 sm:inline rounded-sm text-white text-justify p-2 4xl:text-2xl'>
+            {movieDetails.overview}
+          </p>
+        </div>
       </div>
       <div className='pt-96 mt-96'></div>
       <div className='hidden 4xl:block 4xl:h-96 xl:block xl:h-60'></div>
