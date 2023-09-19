@@ -105,7 +105,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
           </p>
         </div>
       </div>
-      <div className='pt-96 mt-96 xl:mt-[600px] 2xl:mt-[1100px]'></div>
+      <div className='pt-96 mt-96 xl:mt-[600px] 4xl:mt-[1100px]'></div>
       <h2 className='pl-4 2xl:mt-32 mb-2 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12 text-white'>
         Recommended
       </h2>

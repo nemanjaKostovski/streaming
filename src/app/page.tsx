@@ -66,7 +66,7 @@ export default function Home() {
           )}
         </Carousel>
       </div>
-      <div className='pt-96 mt-96 xl:mt-[500px] 2xl:mt-[1100px]'>
+      <div className='pt-96 mt-96 xl:mt-[500px] 4xl:mt-[1100px]'>
         <h2 className='pl-4 mt-32 mb-2 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12 text-white'>
           Trending Movies today
         </h2>
