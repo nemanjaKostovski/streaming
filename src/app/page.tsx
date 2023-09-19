@@ -27,7 +27,7 @@ export default function Home() {
   if (!trendingMovies) return <p>Loading...</p>;
 
   return (
-    <main className='overflow-hidden'>
+    <main className=''>
       <NavBar />
       <div className='absolute top-0 z-10 w-screen sm:w-auto h-60 sm:h-screen mb-60'>
         <Carousel>
@@ -39,15 +39,16 @@ export default function Home() {
               id: string;
             }) => (
               <div className='relative' key={movie.id}>
-                <div className='absolute top-0 left-0 h-full bg-gradient-to-b from-transparent opacity-60 to-black'></div>
+                <div className='absolute top-80 left-0 w-full h-full bg-gradient-to-b from-transparent opacity-100 to-black'></div>
                 <Image
                   src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                   alt={movie.title}
                   width={1640}
                   height={923}
-                  className='hidden sm:block sm:w-screen sm:h-screen w-full pl-4 sm:pl-0 pr-4 sm:pr-0 bg-gradient-to-b'
+                  className='hidden sm:block sm:w-screen sm:h-screen w-full pl-4 sm:pl-0 pr-4 sm:pr-0 bg-gradient-to-b from-transparent to-black'
                   priority
                 />
+
                 <Image
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   className='sm:hidden w-screen h-screen bg-gradient-to-b'
