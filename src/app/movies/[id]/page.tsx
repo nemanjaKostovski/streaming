@@ -9,7 +9,7 @@ import {
 } from '@/lib/fetch';
 import { Carousel } from '@material-tailwind/react';
 import Image from 'next/image';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 type Movie = {
   id: number;
@@ -80,7 +80,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
 
         <Image
           src={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
-          className='sm:hidden w-screen h-screen'
+          className='sm:hidden w-screen h-full bg-gradient-to-b'
           width={384}
           height={576}
           alt={movieDetails.original_title}
@@ -105,8 +105,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
           </p>
         </div>
       </div>
-      <div className='pt-96 mt-96'></div>
-      <div className='hidden 4xl:block 4xl:h-96 xl:block xl:h-60'></div>
+      <div className='pt-96 mt-96 xl:mt-[600px] 2xl:mt-[1100px]'></div>
       <h2 className='pl-4 2xl:mt-32 mb-2 text-xl 4xl:mt-96 sm:ml-12 sm:mr-12 text-white'>
         Recommended
       </h2>
