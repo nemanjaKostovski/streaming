@@ -48,14 +48,14 @@ const Carousel = ({ children, interval = 5000 }: Carousel) => {
     <div className='flex overflow-hidden relative h-screen 4xl:h-10/12'>
       <button
         onClick={handlePrev}
-        className='p-2 -translate-x-0 translate-y-[-50%] absolute top-1/2 left-5 z-10 text-2xl rounded hover:bg-blue-gray-300 hover:bg-opacity-50 focus:bg-blue-gray-400'
+        className='p-2 -translate-x-0 translate-y-[-50%] absolute top-1/2 left-5 z-10 text-2xl rounded hover:bg-blue-gray-300 hover:bg-opacity-50'
       >
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
       <button onClick={handleNext}>
         <FontAwesomeIcon
           icon={faChevronRight}
-          className='p-2 absolute -translate-x-0 translate-y-[-50%] top-1/2 right-5 z-10 text-2xl rounded hover:bg-blue-gray-300 hover:bg-opacity-50 focus:bg-blue-gray-400'
+          className='p-2 -translate-x-0 translate-y-[-50%] absolute top-1/2 right-5 z-10 text-2xl rounded hover:bg-blue-gray-300 hover:bg-opacity-50'
         />
       </button>
 
