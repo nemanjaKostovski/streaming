@@ -76,7 +76,7 @@ const Movie = ({ params }: { params: { id: number } }) => {
           priority
           alt={movieDetails.original_title}
         />
-        <div className='absolute top-40 left-0 w-full h-full bg-gradient-to-b from-transparent opacity-60 to-black'></div>
+        <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent opacity-60 to-black'></div>
 
         <Image
           src={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
