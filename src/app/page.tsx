@@ -38,7 +38,7 @@ export default function Home() {
               title: string;
               id: string;
             }) => (
-              <div className='relative' key={movie.id}>
+              <div className='relative animate' key={movie.id}>
                 <div className='absolute top-80 left-0 w-full h-full bg-gradient-to-b from-transparent opacity-100 to-black'></div>
                 <Image
                   src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
