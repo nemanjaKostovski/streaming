@@ -64,14 +64,6 @@ body {
     );
   }
   /*Styles for carousel image transition*/
-  .carousel-slide {
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  .carousel-slide-hidden {
-    opacity: 0;
-    display: none;
-  }
   .animate {
     animation: 0.3s normal slide;
   }
